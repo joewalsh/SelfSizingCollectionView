@@ -12,6 +12,8 @@
 		D836460D21B0907800882346 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D836460B21B0907800882346 /* Main.storyboard */; };
 		D836460F21B0907A00882346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D836460E21B0907A00882346 /* Assets.xcassets */; };
 		D836461221B0907A00882346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D836461021B0907A00882346 /* LaunchScreen.storyboard */; };
+		D836461A21B0A0C800882346 /* UIView+ConstrainedSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836461921B0A0C800882346 /* UIView+ConstrainedSubview.swift */; };
+		D836461C21B0A0DF00882346 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D836461B21B0A0DF00882346 /* Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		D836460E21B0907A00882346 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D836461121B0907A00882346 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D836461321B0907A00882346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D836461921B0A0C800882346 /* UIView+ConstrainedSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstrainedSubview.swift"; sourceTree = "<group>"; };
+		D836461B21B0A0DF00882346 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				D836460721B0907800882346 /* AppDelegate.swift */,
 				D836460921B0907800882346 /* ViewController.swift */,
+				D836461B21B0A0DF00882346 /* Cell.swift */,
+				D836461921B0A0C800882346 /* UIView+ConstrainedSubview.swift */,
 				D836460B21B0907800882346 /* Main.storyboard */,
 				D836460E21B0907A00882346 /* Assets.xcassets */,
 				D836461021B0907A00882346 /* LaunchScreen.storyboard */,
@@ -136,6 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D836460A21B0907800882346 /* ViewController.swift in Sources */,
+				D836461C21B0A0DF00882346 /* Cell.swift in Sources */,
+				D836461A21B0A0C800882346 /* UIView+ConstrainedSubview.swift in Sources */,
 				D836460821B0907800882346 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

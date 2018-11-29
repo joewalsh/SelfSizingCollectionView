@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  CollectionView
-//
-//  Created by Joe Walsh on 11/29/18.
-//  Copyright © 2018 a. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

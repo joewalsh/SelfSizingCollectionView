@@ -1,51 +1,5 @@
 import UIKit
 
-extension UIView {
-    func addConstrainedSubview(_ subview: UIView, with insets: NSDirectionalEdgeInsets = .zero, priority: UILayoutPriority = .required) {
-        addSubview(subview)
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = subview.topAnchor.constraint(equalTo: topAnchor, constant: insets.top)
-        topConstraint.priority = priority
-        let bottomConstraint = bottomAnchor.constraint(equalTo: subview.bottomAnchor, constant: insets.bottom)
-        bottomConstraint.priority = priority
-        let leftConstraint = subview.leadingAnchor.constraint(equalTo: leadingAnchor, constant: insets.leading)
-        leftConstraint.priority = priority
-        let rightConstraint = trailingAnchor.constraint(equalTo: subview.trailingAnchor, constant: insets.trailing)
-        rightConstraint.priority = priority
-        NSLayoutConstraint.activate([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
-    }
-}
-
-class Cell: UICollectionViewCell {
-    let label = UILabel()
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
-    func setup() {
-        backgroundView = UIView()
-        backgroundView?.backgroundColor = UIColor.white
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = 300
-        contentView.addConstrainedSubview(label)
-        let widthConstraint = contentView.widthAnchor.constraint(equalToConstant: 300)
-        widthConstraint.priority = UILayoutPriority(rawValue: 999)
-        NSLayoutConstraint.activate([widthConstraint])
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-        label.font = UIFont.preferredFont(forTextStyle: .body, compatibleWith: traitCollection)
-    }
-}
-
 let dictionary = ["lorem", "ipsum", "is", "simply", "dummy", "text", "of", "the", "printing", "and", "typesetting", "industry"]
 
 class ViewController: UIViewController {

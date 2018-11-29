@@ -33,9 +33,9 @@ class Cell: UICollectionViewCell {
         backgroundView = UIView()
         backgroundView?.backgroundColor = UIColor.white
         label.numberOfLines = 0
+        label.preferredMaxLayoutWidth = 300
         contentView.addConstrainedSubview(label)
-        let widthConstraint = label.widthAnchor.constraint(equalToConstant: 300)
-        widthConstraint.priority = UILayoutPriority(rawValue: 999)
+        let widthConstraint = contentView.widthAnchor.constraint(equalToConstant: 300)
         NSLayoutConstraint.activate([widthConstraint])
     }
     

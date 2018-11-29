@@ -36,6 +36,7 @@ class Cell: UICollectionViewCell {
         label.preferredMaxLayoutWidth = 300
         contentView.addConstrainedSubview(label)
         let widthConstraint = contentView.widthAnchor.constraint(equalToConstant: 300)
+        widthConstraint.priority = UILayoutPriority(rawValue: 999)
         NSLayoutConstraint.activate([widthConstraint])
     }
     

@@ -2,12 +2,41 @@ import UIKit
 
 let dictionary = ["lorem", "ipsum", "is", "simply", "dummy", "text", "of", "the", "printing", "and", "typesetting", "industry"]
 
+
+class Layout: UICollectionViewFlowLayout {
+    static let defaultColumnWidth:CGFloat = 300
+    var fixedColumnWidth: CGFloat = defaultColumnWidth
+    override func prepare() {
+        defer {
+            super.prepare()
+        }
+        fixedColumnWidth = Layout.defaultColumnWidth
+        guard let collectionView = collectionView else {
+            return
+        }
+        fixedColumnWidth = collectionView.bounds.width - sectionInset.left - sectionInset.right
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        guard let attributes = super.layoutAttributesForElements(in: rect) else {
+            return nil
+        }
+        return attributes.compactMap { $0.representedElementCategory == .cell ? layoutAttributesForItem(at: $0.indexPath) : $0 }
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let superAttributes = super.layoutAttributesForItem(at: indexPath)
+        superAttributes?.bounds.size.width = fixedColumnWidth
+        return superAttributes
+    }
+}
+
 class ViewController: UIViewController {
     var data: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let flowLayout = UICollectionViewFlowLayout()
+        let flowLayout = Layout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumInteritemSpacing = 1
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)

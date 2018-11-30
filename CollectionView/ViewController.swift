@@ -33,10 +33,10 @@ class Layout: UICollectionViewFlowLayout {
 
 class ViewController: UIViewController {
     var data: [String]!
+    let flowLayout: Layout = Layout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let flowLayout = Layout()
         flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         flowLayout.minimumInteritemSpacing = 1
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
@@ -60,6 +60,11 @@ class ViewController: UIViewController {
         collectionView.register(Cell.self, forCellWithReuseIdentifier: "cell")
         collectionView.dataSource = self
         collectionView.reloadData()
+    }
+    
+    override func viewSafeAreaInsetsDidChange() {
+        super.viewSafeAreaInsetsDidChange()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: view.safeAreaInsets.left, bottom: 0, right: view.safeAreaInsets.right)
     }
 }
 

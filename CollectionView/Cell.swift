@@ -2,8 +2,16 @@ import UIKit
 
 class Cell: UICollectionViewCell {
     let label = UILabel()
+    
+    var fixedWidth: CGFloat = 50 {
+        didSet {
+            widthConstraint.constant = fixedWidth
+            label.preferredMaxLayoutWidth = fixedWidth
+        }
+    }
+    
     lazy var widthConstraint: NSLayoutConstraint = {
-        let constraint = contentView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width)
+        let constraint = contentView.widthAnchor.constraint(equalToConstant: fixedWidth)
         constraint.priority = UILayoutPriority(rawValue: 999)
         NSLayoutConstraint.activate([constraint])
         return constraint
@@ -23,7 +31,7 @@ class Cell: UICollectionViewCell {
         backgroundView = UIView()
         backgroundView?.backgroundColor = UIColor.white
         label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = contentView.frame.size.width
+        label.preferredMaxLayoutWidth = fixedWidth
         contentView.addConstrainedSubview(label)
     }
     
@@ -33,7 +41,7 @@ class Cell: UICollectionViewCell {
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        widthConstraint.constant = layoutAttributes.bounds.width
+        fixedWidth = layoutAttributes.bounds.size.width
         super.apply(layoutAttributes)
     }
 }
